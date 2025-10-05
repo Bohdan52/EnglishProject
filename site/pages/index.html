@@ -2,45 +2,240 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pussy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportStream - Трансляції спорту</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/site/styles/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-secondary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">"Назва Компанії"</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            TV channels
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Champion League</a></li>
-            <li><a class="dropdown-item" href="#">The World of volleyball</a></li>
-            <li><a class="dropdown-item" href="#">The world of tennis</a></li>
-            <li><a class="dropdown-item" href="#">The world of basketball</a></li>
-          </ul>
-        </li>
-       
-      
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
+    <!-- Навігація -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-play-btn-fill"></i> SportStream
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#live">Живі</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#schedule">Розклад</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#results">Результати</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#news">Новини</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tables">Таблиці</a></li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Пошук матчів...">
+                    <button class="btn btn-outline-light" type="submit">Пошук</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Hero секція -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <span class="badge live-badge mb-3">LIVE</span>
+            <h1 class="display-4 fw-bold mb-3">Динамо Київ vs Шахтар Донецьк</h1>
+            <p class="lead mb-4">УПЛ - 75' хвилина | Рахунок: 2-1</p>
+            <button class="btn btn-danger btn-lg me-2">
+                <i class="bi bi-play-fill"></i> Дивитися LIVE
+            </button>
+            <button class="btn btn-outline-light btn-lg">Статистика</button>
+        </div>
+    </section>
 
+    <!-- Живі трансляції -->
+    <section id="live" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="mb-4"><i class="bi bi-broadcast text-danger"></i> Живі трансляції</h2>
+            <div class="row g-4">
+                <!-- Картка матчу -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card match-card h-100">
+                        <div class="card-header bg-danger text-white d-flex justify-content-between">
+                            <span>Футбол • УПЛ</span>
+                            <span class="badge bg-light text-dark">LIVE 63'</span>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="row align-items-center">
+                                <div class="col-4">
+                                    <img src="https://via.placeholder.com/60" class="img-fluid" alt="Динамо">
+                                    <div class="mt-2">Динамо</div>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="text-danger">2 - 1</h4>
+                                    <small class="text-muted">63' хвилина</small>
+                                </div>
+                                <div class="col-4">
+                                    <img src="https://via.placeholder.com/60" class="img-fluid" alt="Шахтар">
+                                    <div class="mt-2">Шахтар</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-outline-danger w-100">До трансляції</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Додайте більше карток -->
+            </div>
+        </div>
+    </section>
 
+    <!-- Розклад трансляцій -->
+    <section id="schedule" class="py-5">
+        <div class="container">
+            <h2 class="mb-4"><i class="bi bi-calendar-event text-primary"></i> Розклад трансляцій</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Час</th>
+                            <th>Подія</th>
+                            <th>Ліга</th>
+                            <th>Трансляція</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>18:00</td>
+                            <td>Баскетбол: Україна vs Польща</td>
+                            <td>Євробаскет</td>
+                            <td><span class="badge bg-success">Безкоштовно</span></td>
+                        </tr>
+                        <tr>
+                            <td>20:30</td>
+                            <td>Теніс: Україна vs Сербія</td>
+                            <td>Кубок Девіса</td>
+                            <td><span class="badge bg-warning">Преміум</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+    <!-- Останні результати -->
+    <section id="results" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="mb-4"><i class="bi bi-trophy-fill text-warning"></i> Останні результати</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="d-flex justify-content-between align-items-center p-3 bg-white rounded">
+                        <div class="text-end" style="flex: 1;">
+                            <strong>Ворскла</strong>
+                            <div class="text-muted">Футбол</div>
+                        </div>
+                        <div class="mx-3">
+                            <span class="h5 mb-0">1 - 3</span>
+                        </div>
+                        <div style="flex: 1;">
+                            <strong>Зоря</strong>
+                            <div class="text-muted">УПЛ</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Додайте більше результатів -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Спортивні новини -->
+    <section id="news" class="py-5">
+        <div class="container">
+            <h2 class="mb-4"><i class="bi bi-newspaper text-info"></i> Спортивні новини</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Новина">
+                        <div class="card-body">
+                            <h5 class="card-title">Україна перемагає у Кубку Девіса</h5>
+                            <p class="card-text">Збірна України з тенісу здобула важливу перемогу...</p>
+                            <a href="#" class="btn btn-outline-primary">Читати</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Додайте більше новин -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Турнірні таблиці -->
+    <section id="tables" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="mb-4"><i class="bi bi-table text-success"></i> Турнірні таблиці</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-success text-white">
+                            УПЛ - Турнірна таблиця
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table table-striped mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Команда</th>
+                                        <th>О</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Шахтар</td>
+                                        <td>45</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Динамо</td>
+                                        <td>42</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>SportStream</h5>
+                    <p>Найкращі спортивні трансляції онлайн</p>
+                </div>
+                <div class="col-md-3">
+                    <h6>Контакти</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Email: info@sportstream.ua</a></li>
+                        <li><a href="#" class="text-light">Телефон: +380 XX XXX XXXX</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6>Соціальні мережі</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light"><i class="bi bi-telegram fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <small>&copy; 2024 SportStream. Всі права захищені.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
