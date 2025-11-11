@@ -3,239 +3,687 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportStream - Трансляції спорту</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/site/styles/style.css">
+    <title>SportCast - Live Sports Broadcast</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a2a;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: #1a1a3a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff4d4d;
+        }
+        
+        .logo span {
+            color: #fff;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ff4d4d;
+        }
+        
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-btn, .login-btn, .signup-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            margin-left: 15px;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        .search-btn:hover, .login-btn:hover {
+            color: #ff4d4d;
+        }
+        
+        .signup-btn {
+            background-color: #ff4d4d;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .signup-btn:hover {
+            background-color: #ff3333;
+            color: #fff;
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(10, 10, 42, 0.8), rgba(10, 10, 42, 0.8)), url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #ccc;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background-color: #ff4d4d;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background-color: #ff3333;
+        }
+        
+        /* Live matches section */
+        .section-title {
+            font-size: 32px;
+            margin: 40px 0 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #ff4d4d;
+            margin: 10px auto;
+        }
+        
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .match-card {
+            background-color: #1a1a3a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .match-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .match-header {
+            background-color: #ff4d4d;
+            padding: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .match-teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .team {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .team-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 10px;
+            background-color: #2a2a5a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .team-name {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .team-score {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .vs {
+            font-weight: 700;
+            margin: 0 10px;
+        }
+        
+        .match-info {
+            padding: 15px;
+            background-color: #2a2a5a;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .live-badge {
+            display: inline-block;
+            background-color: #ff4d4d;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 10px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        /* Sports categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .category-btn {
+            background-color: #2a2a5a;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background-color: #ff4d4d;
+        }
+        
+        /* Featured events */
+        .featured-events {
+            margin: 50px 0;
+        }
+        
+        .events-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px 0;
+            scrollbar-width: thin;
+            scrollbar-color: #ff4d4d #1a1a3a;
+        }
+        
+        .events-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .events-slider::-webkit-scrollbar-track {
+            background: #1a1a3a;
+            border-radius: 10px;
+        }
+        
+        .events-slider::-webkit-scrollbar-thumb {
+            background: #ff4d4d;
+            border-radius: 10px;
+        }
+        
+        .event-card {
+            min-width: 250px;
+            background-color: #1a1a3a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .event-image {
+            height: 150px;
+            background-color: #2a2a5a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .event-details {
+            padding: 15px;
+        }
+        
+        .event-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .event-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a3a;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ff4d4d;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ff4d4d;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #2a2a5a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: #ff4d4d;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #2a2a5a;
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .matches-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Навігація -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <!-- Header -->
+    <header>
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">
-                <i class="bi bi-play-btn-fill"></i> SportStream
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="#live">Живі</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#schedule">Розклад</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#results">Результати</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#news">Новини</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tables">Таблиці</a></li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Пошук матчів...">
-                    <button class="btn btn-outline-light" type="submit">Пошук</button>
-                </form>
+            <div class="header-content">
+                <div class="logo">Sport<span>Cast</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Live</a></li>
+                        <li><a href="#">Sports</a></li>
+                        <li><a href="#">Schedule</a></li>
+                        <li><a href="#">Highlights</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <button class="search-btn">Search</button>
+                    <button class="login-btn">Login</button>
+                    <button class="signup-btn">Sign Up</button>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero секція -->
-    <section class="hero-section text-center">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <span class="badge live-badge mb-3">LIVE</span>
-            <h1 class="display-4 fw-bold mb-3">Динамо Київ vs Шахтар Донецьк</h1>
-            <p class="lead mb-4">УПЛ - 75' хвилина | Рахунок: 2-1</p>
-            <button class="btn btn-danger btn-lg me-2">
-                <i class="bi bi-play-fill"></i> Дивитися LIVE
-            </button>
-            <button class="btn btn-outline-light btn-lg">Статистика</button>
+            <h1>Live Sports Broadcast</h1>
+            <p>Watch your favorite sports events live in high quality. Never miss a moment of the action with our premium streaming service.</p>
+            <a href="#" class="cta-btn">Watch Live Now</a>
         </div>
     </section>
 
-    <!-- Живі трансляції -->
-    <section id="live" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="mb-4"><i class="bi bi-broadcast text-danger"></i> Живі трансляції</h2>
-            <div class="row g-4">
-                <!-- Картка матчу -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="card match-card h-100">
-                        <div class="card-header bg-danger text-white d-flex justify-content-between">
-                            <span>Футбол • УПЛ</span>
-                            <span class="badge bg-light text-dark">LIVE 63'</span>
-                        </div>
-                        <div class="card-body text-center">
-                            <div class="row align-items-center">
-                                <div class="col-4">
-                                    <img src="https://via.placeholder.com/60" class="img-fluid" alt="Динамо">
-                                    <div class="mt-2">Динамо</div>
-                                </div>
-                                <div class="col-4">
-                                    <h4 class="text-danger">2 - 1</h4>
-                                    <small class="text-muted">63' хвилина</small>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://via.placeholder.com/60" class="img-fluid" alt="Шахтар">
-                                    <div class="mt-2">Шахтар</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-outline-danger w-100">До трансляції</button>
-                        </div>
+    <!-- Live Matches Section -->
+    <section class="container">
+        <h2 class="section-title">Live Matches</h2>
+        
+        <div class="categories">
+            <button class="category-btn active">All</button>
+            <button class="category-btn">Football</button>
+            <button class="category-btn">Basketball</button>
+            <button class="category-btn">Tennis</button>
+            <button class="category-btn">Hockey</button>
+            <button class="category-btn">Baseball</button>
+        </div>
+        
+        <div class="matches-grid">
+            <!-- Match 1 -->
+            <div class="match-card">
+                <div class="match-header">Premier League</div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-logo">MU</div>
+                        <div class="team-name">Manchester United</div>
+                        <div class="team-score">2</div>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <div class="team-logo">MC</div>
+                        <div class="team-name">Manchester City</div>
+                        <div class="team-score">1</div>
                     </div>
                 </div>
-                <!-- Додайте більше карток -->
+                <div class="match-info">
+                    <span class="live-badge">LIVE</span>
+                    <span>65' Minute</span>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Розклад трансляцій -->
-    <section id="schedule" class="py-5">
-        <div class="container">
-            <h2 class="mb-4"><i class="bi bi-calendar-event text-primary"></i> Розклад трансляцій</h2>
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Час</th>
-                            <th>Подія</th>
-                            <th>Ліга</th>
-                            <th>Трансляція</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>18:00</td>
-                            <td>Баскетбол: Україна vs Польща</td>
-                            <td>Євробаскет</td>
-                            <td><span class="badge bg-success">Безкоштовно</span></td>
-                        </tr>
-                        <tr>
-                            <td>20:30</td>
-                            <td>Теніс: Україна vs Сербія</td>
-                            <td>Кубок Девіса</td>
-                            <td><span class="badge bg-warning">Преміум</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- Останні результати -->
-    <section id="results" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="mb-4"><i class="bi bi-trophy-fill text-warning"></i> Останні результати</h2>
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <div class="d-flex justify-content-between align-items-center p-3 bg-white rounded">
-                        <div class="text-end" style="flex: 1;">
-                            <strong>Ворскла</strong>
-                            <div class="text-muted">Футбол</div>
-                        </div>
-                        <div class="mx-3">
-                            <span class="h5 mb-0">1 - 3</span>
-                        </div>
-                        <div style="flex: 1;">
-                            <strong>Зоря</strong>
-                            <div class="text-muted">УПЛ</div>
-                        </div>
+            
+            <!-- Match 2 -->
+            <div class="match-card">
+                <div class="match-header">NBA</div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-logo">LAL</div>
+                        <div class="team-name">Lakers</div>
+                        <div class="team-score">98</div>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <div class="team-logo">BOS</div>
+                        <div class="team-name">Celtics</div>
+                        <div class="team-score">102</div>
                     </div>
                 </div>
-                <!-- Додайте більше результатів -->
+                <div class="match-info">
+                    <span class="live-badge">LIVE</span>
+                    <span>Q4 08:32</span>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Спортивні новини -->
-    <section id="news" class="py-5">
-        <div class="container">
-            <h2 class="mb-4"><i class="bi bi-newspaper text-info"></i> Спортивні новини</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Новина">
-                        <div class="card-body">
-                            <h5 class="card-title">Україна перемагає у Кубку Девіса</h5>
-                            <p class="card-text">Збірна України з тенісу здобула важливу перемогу...</p>
-                            <a href="#" class="btn btn-outline-primary">Читати</a>
-                        </div>
+            
+            <!-- Match 3 -->
+            <div class="match-card">
+                <div class="match-header">Champions League</div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-logo">RM</div>
+                        <div class="team-name">Real Madrid</div>
+                        <div class="team-score">0</div>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <div class="team-logo">FCB</div>
+                        <div class="team-name">Barcelona</div>
+                        <div class="team-score">0</div>
                     </div>
                 </div>
-                <!-- Додайте більше новин -->
+                <div class="match-info">
+                    <span>Starts in 2:15:00</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Турнірні таблиці -->
-    <section id="tables" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="mb-4"><i class="bi bi-table text-success"></i> Турнірні таблиці</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header bg-success text-white">
-                            УПЛ - Турнірна таблиця
-                        </div>
-                        <div class="card-body p-0">
-                            <table class="table table-striped mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Команда</th>
-                                        <th>О</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Шахтар</td>
-                                        <td>45</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Динамо</td>
-                                        <td>42</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+    <!-- Featured Events -->
+    <section class="container featured-events">
+        <h2 class="section-title">Featured Events</h2>
+        
+        <div class="events-slider">
+            <!-- Event 1 -->
+            <div class="event-card">
+                <div class="event-image" style="background-color: #2a5a2a;">Tennis Championship</div>
+                <div class="event-details">
+                    <h3 class="event-title">Wimbledon Finals</h3>
+                    <div class="event-meta">
+                        <span>Tomorrow</span>
+                        <span>14:00 GMT</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event 2 -->
+            <div class="event-card">
+                <div class="event-image" style="background-color: #5a2a2a;">Boxing</div>
+                <div class="event-details">
+                    <h3 class="event-title">Heavyweight Title Fight</h3>
+                    <div class="event-meta">
+                        <span>Saturday</span>
+                        <span>21:00 GMT</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event 3 -->
+            <div class="event-card">
+                <div class="event-image" style="background-color: #2a2a5a;">Olympics</div>
+                <div class="event-details">
+                    <h3 class="event-title">100m Finals</h3>
+                    <div class="event-meta">
+                        <span>Next Week</span>
+                        <span>19:30 GMT</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event 4 -->
+            <div class="event-card">
+                <div class="event-image" style="background-color: #5a5a2a;">Formula 1</div>
+                <div class="event-details">
+                    <h3 class="event-title">Monaco Grand Prix</h3>
+                    <div class="event-meta">
+                        <span>Sunday</span>
+                        <span>13:00 GMT</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Футер -->
-    <footer class="bg-dark text-light py-4">
+    <!-- Footer -->
+    <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>SportStream</h5>
-                    <p>Найкращі спортивні трансляції онлайн</p>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SportCast</h3>
+                    <p>Your premier destination for live sports broadcasting. Watch all major sports events in high quality.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">FB</a>
+                        <a href="#" class="social-icon">TW</a>
+                        <a href="#" class="social-icon">IG</a>
+                        <a href="#" class="social-icon">YT</a>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <h6>Контакти</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-light">Email: info@sportstream.ua</a></li>
-                        <li><a href="#" class="text-light">Телефон: +380 XX XXX XXXX</a></li>
+                
+                <div class="footer-column">
+                    <h3>Sports</h3>
+                    <ul>
+                        <li><a href="#">Football</a></li>
+                        <li><a href="#">Basketball</a></li>
+                        <li><a href="#">Tennis</a></li>
+                        <li><a href="#">Hockey</a></li>
+                        <li><a href="#">Baseball</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3">
-                    <h6>Соціальні мережі</h6>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-light"><i class="bi bi-telegram fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
-                    </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">System Requirements</a></li>
+                        <li><a href="#">Feedback</a></li>
+                    </ul>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="text-center">
-                <small>&copy; 2024 SportStream. Всі права захищені.</small>
+            
+            <div class="copyright">
+                <p>&copy; 2023 SportCast. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple JavaScript for category buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
