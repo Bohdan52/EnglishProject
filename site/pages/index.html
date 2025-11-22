@@ -2,9 +2,351 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pussy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/EnglishProject/site/styles/style.css">
+    <title>SportCast - Live Sports Broadcast</title>
+   
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Sport<span>Cast</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Live</a></li>
+                        <li><a href="#">Sports</a></li>
+                        <li><a href="#">Schedule</a></li>
+                        <li><a href="#">Highlights</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <button class="search-btn">Search</button>
+                    <button class="login-btn">Login</button>
+                    <button class="signup-btn">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Live Sports Broadcast</h1>
+            <p>Watch your favorite sports events live in high quality. Never miss a moment of the action with our premium streaming service.</p>
+            <a href="#" class="cta-btn">Watch Live Now</a>
+        </div>
+    </section>
+
+    <!-- Live Matches Section -->
+    <section class="container">
+        <h2 class="section-title">Live Matches</h2>
+        
+        <div class="categories">
+            <button class="category-btn active">All</button>
+            <button class="category-btn">Football</button>
+            <button class="category-btn">Basketball</button>
+            <button class="category-btn">Tennis</button>
+            <button class="category-btn">Hockey</button>
+            <button class="category-btn">Baseball</button>
+        </div>
+        
+        <div class="matches-grid">
+            <!-- Match 1 -->
+            <div class="match-card">
+                <div class="match-header">Premier League</div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-logo">MU</div>
+                        <div class="team-name">Manchester United</div>
+                        <div class="team-score">2</div>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <div class="team-logo">MC</div>
+                        <div class="team-name">Manchester City</div>
+                        <div class="team-score">1</div>
+                    </div>
+                </div>
+                <div class="match-info">
+                    <span class="live-badge">LIVE</span>
+                    <span>65' Minute</span>
+                </div>
+            </div>
+            
+            <!-- Match 2 -->
+            <div class="match-card">
+                <div class="match-header">NBA</div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-logo">LAL</div>
+                        <div class="team-name">Lakers</div>
+                        <div class="team-score">98</div>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <div class="team-logo">BOS</div>
+                        <div class="team-name">Celtics</div>
+                        <div class="team-score">102</div>
+                    </div>
+                </div>
+                <div class="match-info">
+                    <span class="live-badge">LIVE</span>
+                    <span>Q4 08:32</span>
+                </div>
+            </div>
+            
+            <!-- Match 3 -->
+            <div class="match-card">
+                <div class="match-header">Champions League</div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-logo">RM</div>
+                        <div class="team-name">Real Madrid</div>
+                        <div class="team-score">0</div>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <div class="team-logo">FCB</div>
+                        <div class="team-name">Barcelona</div>
+                        <div class="team-score">0</div>
+                    </div>
+                </div>
+                <div class="match-info">
+                    <span>Starts in 2:15:00</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events -->
+    <section class="container featured-events">
+        <h2 class="section-title">Featured Events</h2>
+        
+        <div class="events-slider">
+            <!-- Event 1 -->
+            <div class="event-card ">
+                <div class="event-image" style="background-color: #2a5a2a;">Tennis Championship</div>
+                <div class="event-details">
+                    <h3 class="event-title">Wimbledon Finals</h3>
+                    <div class="event-meta">
+                        <span>Tomorrow</span>
+                        <span>14:00 GMT</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event 2 -->
+            <div class="event-card">
+                <div class="event-image" style="background-color: #5a2a2a;">Boxing</div>
+                <div class="event-details">
+                    <h3 class="event-title">Heavyweight Title Fight</h3>
+                    <div class="event-meta">
+                        <span>Saturday</span>
+                        <span>21:00 GMT</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event 3 -->
+            <div class="event-card">
+                <div class="event-image" style="background-color: #2a2a5a;">Olympics</div>
+                <div class="event-details">
+                    <h3 class="event-title">100m Finals</h3>
+                    <div class="event-meta">
+                        <span>Next Week</span>
+                        <span>19:30 GMT</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event 4 -->
+            <div class="event-card">
+                <div class="event-image" style="background-color: #5a5a2a;">Formula 1</div>
+                <div class="event-details">
+                    <h3 class="event-title">Monaco Grand Prix</h3>
+                    <div class="event-meta">
+                        <span>Sunday</span>
+                        <span>13:00 GMT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Organizational Chart Section -->
+        <section class="org-section">
+            <div class="container">
+                <h2 class="org-title">Company structure</h2>        
+                <div class="org-chart">
+                    <!-- Рівень 1: Executive & Leadership Team -->
+                    <div class="level level-1">
+                        <div class="node">
+                            Executive & Leadership Team (C-Level)
+                        </div>
+                    </div>
+                    
+                    <!-- Рівень 2: Основні напрямки -->
+                    <div class="level level-2">
+                        <div class="node">
+                            Broadcasting & Production
+                        </div>
+                        <div class="node">
+                            Finance & Administration
+                        </div>
+                        <div class="node">
+                            Content & Media
+                        </div>
+                        <div class="node">
+                            Sales & Marketing
+                        </div>
+                        <div class="node">
+                            Technology & IT
+                        </div>
+                    </div>
+
+                    <!-- Рівень 3: Додаткові відділи -->
+                    <div class="level level-3">
+                        <div class="node">
+                            Customer Support
+                        </div>
+                        <div class="node">
+                            Facilities & Office
+                        </div>
+                        <div class="node">
+                            Human Resources & People
+                        </div>
+                        <div class="node">
+                            Legal & Compliance
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Інформаційна панель -->
+                <div class="info-panel" id="infoPanel">
+                    <h3 id="panelTitle">Виберіть підрозділ для отримання інформації</h3>
+                    <p id="panelContent">Клацніть на будь-якому з підрозділів вище, щоб побачити детальну інформацію про нього.</p>
+                </div>
+            </div>
+        </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SportCast</h3>
+                    <p>Your premier destination for live sports broadcasting. Watch all major sports events in high quality.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">FB</a>
+                        <a href="#" class="social-icon">TW</a>
+                        <a href="#" class="social-icon">IG</a>
+                        <a href="#" class="social-icon">YT</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Sports</h3>
+                    <ul>
+                        <li><a href="#">Football</a></li>
+                        <li><a href="#">Basketball</a></li>
+                        <li><a href="#">Tennis</a></li>
+                        <li><a href="#">Hockey</a></li>
+                        <li><a href="#">Baseball</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">System Requirements</a></li>
+                        <li><a href="#">Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 SportCast. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for category buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                });
+            });
+        });
+                // Організаційна діаграма - інтерактивність
+        document.querySelectorAll('.node').forEach(node => {
+            node.addEventListener('click', function() {
+                // Видаляємо активний клас з усіх блоків
+                document.querySelectorAll('.node').forEach(n => {
+                    n.classList.remove('active');
+                });
+                
+                // Додаємо активний клас до поточного блоку
+                this.classList.add('active');
+                
+                // Оновлюємо інформаційну панель
+                updateInfoPanel(this.textContent.trim());
+            });
+        });
+        
+        // Функція для оновлення інформаційної панелі
+        function updateInfoPanel(department) {
+            const infoPanel = document.getElementById('infoPanel');
+            const panelTitle = document.getElementById('panelTitle');
+            const panelContent = document.getElementById('panelContent');
+            
+            // Додаємо активний клас для показу панелі
+            infoPanel.classList.add('active');
+            
+            // Встановлюємо заголовок
+            panelTitle.textContent = department;
+            
+            // Встановлюємо контент в залежності від підрозділу
+            const departmentInfo = {
+    "Executive & Leadership Team (C-Level)": "The company's leadership team responsible for strategic planning and overall management of the organization.",
+    "Broadcasting & Production": "Department engaged in creating and broadcasting sports content, including live streams and production.",
+    "Finance & Administration": "Responsible for financial planning, accounting, and administrative support of the company's operations.",
+    "Content & Media": "Content development department involved in creating, curating, and managing media materials.",
+    "Sales & Marketing": "Team responsible for promoting the platform and attracting clients and partners.",
+    "Technology & IT": "Technology and information systems department that provides the platform's technical infrastructure.",
+    "Customer Support": "Customer support service that provides assistance and consultations to platform users.",
+    "Facilities & Office": "Department responsible for managing office premises and company infrastructure.",
+    "Human Resources & People": "Human resources department responsible for personnel management, hiring, and employee development.",
+    "Legal & Compliance": "Legal department that ensures compliance with legislation and internal company policies."
+};
+            
+            panelContent.textContent = departmentInfo[department] || "Інформація про цей підрозділ буде додана найближчим часом.";
+        }
+    </script>
 </body>
 </html>
